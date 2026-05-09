@@ -590,6 +590,7 @@ function addEntries(){
   renderAll();
   showToast(`✅ ${added.length}件追加しました（${date}）`);
 }
+function classify(title){
   let code='🔥 今が旬',genre='技術実践',tval='○使えそう';
   if(/本質|変わらない|姿勢|美徳|向き合い|ステートレス|来続ける|歴史|初めまして/.test(title)) code='🏛️ 定番';
   else if(/3日半|10万|600ページ|YCombinator|Y Combinator/.test(title)) code='⭐ 授業向き';
