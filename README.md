@@ -1,4 +1,4 @@
-# Agora Platz Rakuza
+# #036 Agora Platz Rakuza
 **対話から生まれた知識の広場**
 
 水曜夜の座談会で出てきたトピックを蓄積・分類・検索するナレッジアーカイブアプリです。  
@@ -108,4 +108,4 @@ agora-platz-rakuza/
 ---
 
 *QQ Series #014 — Agora Platz Rakuza*  
-*Built with Senari Gakuin × QuestQueries*
+*Built by Claude Sonet3.6 QuestQueries*
