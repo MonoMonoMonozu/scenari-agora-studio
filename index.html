@@ -331,9 +331,9 @@
     <div class="panel-ttl">📋 ナレッジ貼り付け → 追加</div>
     <div class="date-row">
       <label>📅 収録日</label>
-      <input type="date" class="date-picker" id="datePicker">
+      <input type="date" class="date-picker" id="datePicker" onchange="onInputChange()">
     </div>
-    <textarea id="inputArea" placeholder="「今回のハイライト」以降のテキストをそのままペースト&#10;&#10;例：&#10;今回のハイライト&#10;RPGゲーム風AIアプリ - メタバース的な教室空間の構想&#10;メタバースの歴史から学ぶ「来続ける理由」の設計&#10;&#10;※ 従来どおり番号付きリストでもOKです"></textarea>
+    <textarea id="inputArea" oninput="onInputChange()" onpaste="setTimeout(onInputChange,100)" onkeyup="onInputChange()" placeholder="テキストをそのままペースト（形式不問）"></textarea>
     <div class="preview">
       <h4>🔍 解析プレビュー</h4>
       <div id="previewContent"><span style="color:var(--text3);font-size:11px;">テキストを貼ると自動解析します</span></div>
@@ -574,19 +574,7 @@ function onInputChange(){
   btn.disabled = !(date && titles.length);
 }
 
-// あらゆるイベントで検知
-['input','change','keyup','paste'].forEach(ev=>{
-  document.getElementById('inputArea').addEventListener(ev, function(){
-    setTimeout(onInputChange, 50); // paste後のDOM反映を待つ
-  });
-});
-
-
 // 日付ピッカー変更時もプレビュー再描画
-document.getElementById('datePicker').addEventListener('change', function(){
-  document.getElementById('inputArea').dispatchEvent(new Event('input'));
-});
-
 function addEntries(){
   const {date, titles} = parseInput(document.getElementById('inputArea').value);
   if(!date || !titles.length) return;
