@@ -331,9 +331,9 @@
     <div class="panel-ttl">📋 ナレッジ貼り付け → 追加</div>
     <div class="date-row">
       <label>📅 収録日</label>
-      <input type="date" class="date-picker" id="datePicker" onchange="onInputChange()">
+      <input type="date" class="date-picker" id="datePicker" onchange="handleTextInput()">
     </div>
-    <textarea id="inputArea" oninput="onInputChange()" onpaste="setTimeout(onInputChange,100)" onkeyup="onInputChange()" placeholder="テキストをそのままペースト（形式不問）"></textarea>
+    <textarea id="inputArea" oninput="handleTextInput()" onpaste="setTimeout(handleTextInput,100)" onkeyup="handleTextInput()" placeholder="テキストをそのままペースト（形式不問）"></textarea>
     <div class="preview">
       <h4>🔍 解析プレビュー</h4>
       <div id="previewContent"><span style="color:var(--text3);font-size:11px;">テキストを貼ると自動解析します</span></div>
@@ -547,7 +547,7 @@ function parseInput(text){
   return {date, titles};
 }
 
-function onInputChange(){
+function handleTextInput(){
   const el = document.getElementById('inputArea');
   const {date, titles} = parseInput(el.value);
   const box = document.getElementById('previewContent');
